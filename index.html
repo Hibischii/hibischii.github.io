@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dalila — Dream Archive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --pink:#ff7ac8;
+      --violet:#8f5bff;
+      --gold:#ffd36a;
+      --dark:#0f0f1a;
+      --glass: rgba(255,255,255,0.12);
+    }
+
+    *{box-sizing:border-box; margin:0; padding:0;}
+
+    body{
+      font-family: 'Space Grotesk', sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255,122,200,0.25), transparent 40%),
+        radial-gradient(circle at 90% 20%, rgba(143,91,255,0.25), transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(255,211,106,0.15), transparent 40%),
+        linear-gradient(180deg, #0b0b14, #121226);
+      color:#fff;
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    /* decorative noise */
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+      z-index:0;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(15,15,26,0.7), rgba(15,15,26,0.3));
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+
+    nav{
+      max-width:1200px;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:16px 24px;
+    }
+
+    .logo{
+      font-family:'Playfair Display', serif;
+      font-size:22px;
+      letter-spacing:1px;
+      background: linear-gradient(90deg, var(--pink), var(--violet), var(--gold));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    nav a{
+      color:#fff;
+      text-decoration:none;
+      margin-left:18px;
+      opacity:0.8;
+    }
+    nav a:hover{opacity:1;}
+
+    section{
+      max-width:1200px;
+      margin:80px auto;
+      padding:0 24px;
+      position:relative;
+      z-index:1;
+    }
+
+    .hero{
+      min-height:70vh;
+      display:flex;
+      align-items:center;
+    }
+
+    .hero-box{
+      background: linear-gradient(135deg, rgba(255,122,200,0.15), rgba(143,91,255,0.15));
+      border:1px solid rgba(255,255,255,0.2);
+      border-radius:28px;
+      padding:48px;
+      box-shadow: 0 0 40px rgba(143,91,255,0.2);
+    }
+
+    h1{
+      font-family:'Playfair Display', serif;
+      font-size:56px;
+      line-height:1.1;
+      margin-bottom:16px;
+    }
+
+    h2{
+      font-family:'Playfair Display', serif;
+      font-size:36px;
+      margin-bottom:24px;
+    }
+
+    p{
+      opacity:0.85;
+      line-height:1.7;
+    }
+
+    .tagline{
+      font-size:18px;
+      max-width:600px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap:24px;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.05));
+      border:1px solid rgba(255,255,255,0.2);
+      border-radius:24px;
+      padding:24px;
+      transition: all 0.4s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
+      transform: translateX(-100%);
+    }
+
+    .card:hover{
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 10px 40px rgba(255,122,200,0.25);
+    }
+
+    .card:hover:before{
+      transform: translateX(100%);
+      transition: transform 0.8s;
+    }
+
+    .card h3{
+      margin-bottom:12px;
+      font-weight:500;
+    }
+
+    footer{
+      text-align:center;
+      padding:60px 20px;
+      opacity:0.6;
+      font-size:14px;
+    }
+
+    .boho-line{
+      width:120px;
+      height:2px;
+      background: linear-gradient(90deg, var(--pink), var(--gold));
+      margin:16px 0 32px 0;
+      border-radius:2px;
+    }
+
+    @media(max-width:700px){
+      h1{font-size:40px;}
+      .hero-box{padding:28px;}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">Dalila ✦ Dream Archive</div>
+      <div>
+        <a href="#about">About</a>
+        <a href="#works">Creazioni</a>
+        <a href="#projects">Progetti</a>
+        <a href="#contact">Contatti</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-box">
+      <h1>Un archivio di sogni,<br> idee e visioni ✧</h1>
+      <div class="boho-line"></div>
+      <p class="tagline">
+        Questo è il mio spazio personale: un mix tra nostalgia Tumblr, boho vibes e un tocco futuristico.
+        Qui raccolgo creazioni, concept, immagini, idee e mondi.
+      </p>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About me</h2>
+    <div class="boho-line"></div>
+    <p>
+      Scrivi qui una breve descrizione di te, della tua estetica, di cosa ti ispira e cosa vuoi comunicare con le tue creazioni.
+      Pensa a questo sito come a un diario visivo digitale.
+    </p>
+  </section>
+
+  <section id="works">
+    <h2>Creazioni</h2>
+    <div class="boho-line"></div>
+    <div class="grid">
+      <div class="card">
+        <h3>✦ Opera / Progetto 01</h3>
+        <p>Descrizione breve della creazione. Può essere un artwork, un outfit, un concept o una storia.</p>
+      </div>
+      <div class="card">
+        <h3>✦ Opera / Progetto 02</h3>
+        <p>Descrizione breve della creazione. Può essere un artwork, un outfit, un concept o una storia.</p>
+      </div>
+      <div class="card">
+        <h3>✦ Opera / Progetto 03</h3>
+        <p>Descrizione breve della creazione. Può essere un artwork, un outfit, un concept o una storia.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Progetti futuri</h2>
+    <div class="boho-line"></div>
+    <div class="grid">
+      <div class="card">
+        <h3>✦ Sogno 01</h3>
+        <p>Un'idea che vuoi realizzare in futuro.</p>
+      </div>
+      <div class="card">
+        <h3>✦ Sogno 02</h3>
+        <p>Un progetto, una collezione, un mondo immaginario.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contatti</h2>
+    <div class="boho-line"></div>
+    <p>
+      Qui puoi mettere i tuoi social, una mail o un link a Instagram, Tumblr, ecc.
+    </p>
+  </section>
+
+  <footer>
+    © 2026 — Dalila ✦ Dream Archive
+  </footer>
+
+</body>
+</html>
