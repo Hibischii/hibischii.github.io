@@ -25,7 +25,7 @@ body{
   overflow-x:hidden;
 }
 
-/* 💧 Liquid Glass Background - soft pink/rose/violet */
+/* 💧 Liquid Glass Background */
 #liquid-bg{
   position:fixed;
   inset:0;
@@ -123,6 +123,7 @@ section{ max-width:1200px; margin:0 auto 100px auto; padding:0 20px; }
   position:relative;
   overflow:hidden;
   padding:40px;
+  text-align:center;
 }
 
 /* Cinematic Reveal */
@@ -135,8 +136,8 @@ section{ max-width:1200px; margin:0 auto 100px auto; padding:0 20px; }
 }
 
 /* Hero */
-.hero{ min-height:85vh; display:flex; align-items:center; }
-.hero-box{ padding:60px; position:relative; overflow:hidden; }
+.hero{ min-height:85vh; display:flex; align-items:center; justify-content:center; }
+.hero-box{ padding:60px; position:relative; overflow:hidden; max-width:700px; }
 .aura{
   position:absolute;
   inset:-40%;
@@ -159,6 +160,14 @@ p{ line-height:1.8; font-size:17px; opacity:0.95; }
 .card:hover{ transform: translateY(-10px) scale(1.02); box-shadow:0 40px 120px rgba(255,215,106,0.35); }
 
 footer{ text-align:center; padding:100px 20px; opacity:0.7; }
+
+/* Media Player */
+audio{
+  width:100%;
+  border-radius:20px;
+  box-shadow:0 10px 50px rgba(255,200,220,0.3);
+  backdrop-filter: blur(15px) saturate(150%);
+}
 
 /* Mobile */
 @media(max-width:700px){
@@ -197,6 +206,12 @@ footer{ text-align:center; padding:100px 20px; opacity:0.7; }
     <h1>Un tempio liquido di luce e sogni ✧</h1>
     <div class="lux-line"></div>
     <p>Un luogo dove luce, spirito e tecnologia si fondono in armonia cyber-sacra.</p>
+    
+    <!-- Media Player -->
+    <audio controls loop>
+      <source src="audio/angelic_dream.mp3" type="audio/mpeg">
+      Il tuo browser non supporta l'audio.
+    </audio>
   </div>
 </section>
 
@@ -232,7 +247,12 @@ footer{ text-align:center; padding:100px 20px; opacity:0.7; }
   <div class="glass reveal">
     <h2>Il Portale</h2>
     <div class="lux-line"></div>
-    <p>Lascia il tuo segno digitale o i link dei tuoi archivi sacri.</p>
+    <p>Lascia il tuo segno digitale o i link dei tuoi archivi sacri:</p>
+    <ul style="list-style:none; padding:0; margin-top:20px;">
+      <li>📧 <a href="mailto:tuoemail@example.com" class="os-btn">Email</a></li>
+      <li>🌐 <a href="https://www.instagram.com/tuoprofilo" target="_blank" class="os-btn">Instagram</a></li>
+      <li>💾 <a href="https://github.com/tuoprofilo" target="_blank" class="os-btn">GitHub</a></li>
+    </ul>
   </div>
 </section>
 </main>
