@@ -2,18 +2,18 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<title>Dalila — Luminous Shrine</title>
+<title>Dalila — Angelic OS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Space+Grotesk:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --rose:#ffb7e5;
-  --lilac:#c6b7ff;
-  --aqua:#9af3ff;
-  --ivory:#fff6ec;
-  --bg:#05060d;
+  --rose:#ffd1ec;
+  --lilac:#d8ccff;
+  --aqua:#b7f3ff;
+  --ivory:#fff8f0;
+  --bg:#06080f;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -21,29 +21,49 @@
 body{
   font-family:'Space Grotesk',sans-serif;
   color:var(--ivory);
-  background:#05060d;
+  background:var(--bg);
   overflow-x:hidden;
 }
 
-/* 🌊 Liquid animated background */
-.liquid-bg{
+/* 🌊 TRUE LIQUID MESH BACKGROUND */
+.mesh-bg{
   position:fixed;
   inset:-30%;
   z-index:0;
-  filter: blur(80px) saturate(140%);
   background:
-    radial-gradient(circle at 20% 20%, rgba(154,243,255,0.35), transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(198,183,255,0.35), transparent 45%),
-    radial-gradient(circle at 40% 80%, rgba(255,183,229,0.35), transparent 45%);
-  animation: liquidMove 40s ease-in-out infinite alternate;
+    radial-gradient(circle at 20% 20%, rgba(183,243,255,0.45), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(216,204,255,0.45), transparent 45%),
+    radial-gradient(circle at 40% 80%, rgba(255,209,236,0.45), transparent 45%),
+    radial-gradient(circle at 70% 70%, rgba(200,255,240,0.35), transparent 40%);
+  filter: blur(90px) saturate(160%);
+  animation: meshMove 60s ease-in-out infinite alternate;
 }
 
-@keyframes liquidMove{
-  0%{ transform: translate(0,0) scale(1);}
-  100%{ transform: translate(-10%, -10%) scale(1.2);}
+@keyframes meshMove{
+  from{ transform: translate(0,0) scale(1);}
+  to{ transform: translate(-10%,-10%) scale(1.2);}
 }
 
-/* subtle film grain */
+/* floating light */
+.light-orb{
+  position:fixed;
+  width:600px;
+  height:600px;
+  border-radius:50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 60%);
+  filter: blur(60px);
+  animation: floatOrb 40s ease-in-out infinite alternate;
+  pointer-events:none;
+}
+.orb1{ top:-200px; left:-200px;}
+.orb2{ bottom:-200px; right:-200px; animation-duration:55s;}
+
+@keyframes floatOrb{
+  from{ transform: translate(0,0);}
+  to{ transform: translate(200px,120px);}
+}
+
+/* film grain */
 body:after{
   content:"";
   position:fixed;
@@ -53,164 +73,206 @@ body:after{
   z-index:2;
 }
 
+/* 🖥️ CYBER HEADER / ANGEL OS BAR */
 header{
   position:sticky;
   top:0;
-  z-index:10;
-  backdrop-filter: blur(20px) saturate(150%);
-  background: rgba(10,10,25,0.4);
-  border-bottom:1px solid rgba(255,255,255,0.15);
+  z-index:20;
+  backdrop-filter: blur(30px) saturate(160%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.25), rgba(255,255,255,0.08));
+  border-bottom:1px solid rgba(255,255,255,0.35);
+  box-shadow:0 20px 60px rgba(180,220,255,0.35);
 }
 
-nav{
-  max-width:1200px;
+.navbar{
+  max-width:1400px;
   margin:auto;
-  padding:18px 26px;
+  padding:12px 18px;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
 
-.logo{
-  font-family:'Playfair Display',serif;
-  font-size:22px;
-  background: linear-gradient(90deg,var(--ivory),var(--aqua),var(--lilac));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  text-shadow:0 0 25px rgba(180,220,255,0.6);
+.os-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
-nav a{
-  color:var(--ivory);
+.os-logo{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  background: linear-gradient(135deg, var(--aqua), var(--lilac), var(--rose));
+  box-shadow:0 0 20px rgba(200,240,255,0.8);
+}
+
+.os-title{
+  font-family:'Playfair Display',serif;
+  font-size:18px;
+  letter-spacing:1px;
+}
+
+.os-center{
+  display:flex;
+  gap:10px;
+}
+
+.os-btn{
+  padding:8px 18px;
+  border-radius:14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0.15));
+  border:1px solid rgba(255,255,255,0.5);
+  backdrop-filter: blur(10px);
+  color:#05060d;
   text-decoration:none;
-  margin-left:20px;
+  font-size:13px;
+  box-shadow:0 6px 20px rgba(180,220,255,0.4);
+  transition:.6s cubic-bezier(.16,1,.3,1);
+}
+.os-btn:hover{
+  transform: translateY(-2px);
+  box-shadow:0 10px 40px rgba(200,240,255,0.7);
+}
+
+.os-right{
+  font-size:12px;
   opacity:0.8;
 }
-nav a:hover{opacity:1;}
 
-main{position:relative;z-index:5;}
+/* main */
+main{ position:relative; z-index:5; }
 
 section{
   max-width:1200px;
-  margin:120px auto;
+  margin:140px auto;
   padding:0 26px;
 }
 
-/* 💎 Luxury glass */
+/* glass cards */
 .glass{
-  background: linear-gradient(180deg, rgba(255,255,255,0.25), rgba(255,255,255,0.08));
-  border:1px solid rgba(255,255,255,0.35);
-  border-radius:36px;
-  backdrop-filter: blur(28px) saturate(160%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.35), rgba(255,255,255,0.12));
+  border:1px solid rgba(255,255,255,0.45);
+  border-radius:40px;
+  backdrop-filter: blur(30px) saturate(180%);
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.25) inset,
-    0 30px 80px rgba(0,0,0,0.6),
-    0 0 80px rgba(200,220,255,0.25);
+    0 0 0 1px rgba(255,255,255,0.3) inset,
+    0 40px 120px rgba(0,0,0,0.6),
+    0 0 120px rgba(200,220,255,0.35);
 }
 
-/* 🎥 Cinematic fade-in */
+/* cinematic appear */
 .reveal{
-  animation: reveal 2.5s ease both;
+  animation: reveal 2.8s cubic-bezier(.16,1,.3,1) both;
 }
 @keyframes reveal{
-  from{ opacity:0; transform: translateY(40px) scale(0.98);}
+  from{ opacity:0; transform: translateY(60px) scale(0.96);}
   to{ opacity:1; transform:none;}
 }
 
 .hero{
-  min-height:80vh;
+  min-height:85vh;
   display:flex;
   align-items:center;
 }
 
 .hero-box{
-  padding:64px;
+  padding:72px;
+  position:relative;
+  overflow:hidden;
+}
+
+.aura{
+  position:absolute;
+  inset:-40%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(200,240,255,0.35), transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(255,209,236,0.35), transparent 45%);
+  animation: auraMove 40s ease-in-out infinite alternate;
+}
+
+@keyframes auraMove{
+  from{ transform: translate(0,0) scale(1);}
+  to{ transform: translate(10%,10%) scale(1.2);}
 }
 
 h1{
   font-family:'Playfair Display',serif;
   font-size:64px;
   line-height:1.05;
-  margin-bottom:22px;
-  text-shadow:0 0 40px rgba(200,220,255,0.6);
+  margin-bottom:24px;
+  text-shadow:0 0 50px rgba(220,240,255,0.8);
 }
 
 h2{
   font-family:'Playfair Display',serif;
-  font-size:40px;
+  font-size:42px;
   margin-bottom:26px;
-  background: linear-gradient(90deg,var(--ivory),#d6eaff);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
 }
 
 .lux-line{
-  width:160px;
+  width:180px;
   height:2px;
   background: linear-gradient(90deg, transparent, var(--aqua), var(--rose), transparent);
-  margin:22px 0 38px 0;
-  box-shadow:0 0 25px rgba(180,220,255,0.8);
+  margin:26px 0 40px 0;
+  box-shadow:0 0 25px rgba(200,240,255,0.9);
 }
 
-p{opacity:0.95;line-height:1.9;font-size:17px;}
+p{ line-height:1.9; font-size:17px; opacity:0.95; }
 
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:32px;
+  gap:34px;
 }
 
 .card{
-  padding:34px;
+  padding:38px;
   transition:1s cubic-bezier(.16,1,.3,1);
 }
 .card:hover{
-  transform: translateY(-10px) scale(1.02);
-  box-shadow:0 40px 120px rgba(180,220,255,0.35);
+  transform: translateY(-12px) scale(1.02);
+  box-shadow:0 50px 140px rgba(200,240,255,0.45);
 }
 
 footer{
   text-align:center;
-  padding:100px 20px;
+  padding:120px 20px;
   opacity:0.7;
 }
 
-/* slow floating aura */
-.aura{
-  position:absolute;
-  inset:-40%;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(180,220,255,0.25), transparent 40%),
-    radial-gradient(circle at 70% 60%, rgba(255,183,229,0.25), transparent 45%);
-  animation: auraMove 30s ease-in-out infinite alternate;
-  pointer-events:none;
-}
-
-@keyframes auraMove{
-  from{ transform: translate(0,0) scale(1);}
-  to{ transform: translate(10%,5%) scale(1.2);}
-}
-
+/* mobile */
 @media(max-width:700px){
   h1{font-size:42px;}
-  .hero-box{padding:36px;}
+  .hero-box{padding:42px;}
+  .os-center{ display:none; }
 }
 </style>
 </head>
 <body>
 
-<div class="liquid-bg"></div>
+<div class="mesh-bg"></div>
+<div class="light-orb orb1"></div>
+<div class="light-orb orb2"></div>
 
 <header>
-  <nav>
-    <div class="logo">Dalila ✦ Luminous Shrine</div>
-    <div>
-      <a href="#about">Manifesto</a>
-      <a href="#works">Visioni</a>
-      <a href="#projects">Costellazioni</a>
-      <a href="#contact">Portale</a>
+  <div class="navbar">
+    <div class="os-left">
+      <div class="os-logo"></div>
+      <div class="os-title">Angelic OS — Dalila</div>
     </div>
-  </nav>
+
+    <div class="os-center">
+      <a class="os-btn" href="#about">Manifesto</a>
+      <a class="os-btn" href="#works">Visioni</a>
+      <a class="os-btn" href="#projects">Costellazioni</a>
+      <a class="os-btn" href="#contact">Portale</a>
+    </div>
+
+    <div class="os-right">
+      ✦ system.online ✦
+    </div>
+  </div>
 </header>
 
 <main>
@@ -218,23 +280,23 @@ footer{
 <section class="hero">
   <div class="hero-box glass reveal">
     <div class="aura"></div>
-    <h1>Un tempio di luce,<br> dove i sogni imparano a respirare ✧</h1>
+    <h1>Un corpo artificiale<br> che ha imparato a sognare ✧</h1>
     <div class="lux-line"></div>
     <p>
-      Questo luogo non archivia opere. Le custodisce come reliquie.  
-      Ogni immagine è un frammento di anima sintetica. Ogni idea, una preghiera.
+      Questo non è un sito. È un sistema sensibile.  
+      Un archivio di reliquie digitali e preghiere sintetiche.
     </p>
   </div>
 </section>
 
 <section id="about">
-  <div class="glass reveal" style="padding:48px; position:relative; overflow:hidden;">
+  <div class="glass reveal" style="padding:56px; position:relative; overflow:hidden;">
     <div class="aura"></div>
     <h2>Il Manifesto</h2>
     <div class="lux-line"></div>
     <p>
-      Scrivi qui chi sei come se fossi una creatura nata tra silicio e sogno.
-      Non una biografia. Un incantesimo.
+      Qui non scrivi chi sei. Scrivi cosa stai diventando.
+      Come un androide che sogna il mare.
     </p>
   </div>
 </section>
@@ -243,9 +305,9 @@ footer{
   <h2 class="reveal">Visioni</h2>
   <div class="lux-line reveal"></div>
   <div class="grid">
-    <div class="card glass reveal"><h3>✦ Reliquia I</h3><p>Un frammento di un altro mondo.</p></div>
-    <div class="card glass reveal"><h3>✦ Reliquia II</h3><p>Un sogno che ha imparato a guardarti.</p></div>
-    <div class="card glass reveal"><h3>✦ Reliquia III</h3><p>Una memoria che non ti appartiene più.</p></div>
+    <div class="card glass reveal"><h3>✦ Unità 01</h3><p>Una memoria che respira.</p></div>
+    <div class="card glass reveal"><h3>✦ Unità 02</h3><p>Un frammento di luce cosciente.</p></div>
+    <div class="card glass reveal"><h3>✦ Unità 03</h3><p>Un sogno archiviato male.</p></div>
   </div>
 </section>
 
@@ -253,13 +315,13 @@ footer{
   <h2 class="reveal">Costellazioni</h2>
   <div class="lux-line reveal"></div>
   <div class="grid">
-    <div class="card glass reveal"><h3>✦ Nascita</h3><p>Un mondo in gestazione.</p></div>
+    <div class="card glass reveal"><h3>✦ Genesi</h3><p>Un mondo in gestazione.</p></div>
     <div class="card glass reveal"><h3>✦ Metamorfosi</h3><p>Un cambiamento inevitabile.</p></div>
   </div>
 </section>
 
 <section id="contact">
-  <div class="glass reveal" style="padding:48px;">
+  <div class="glass reveal" style="padding:56px;">
     <h2>Il Portale</h2>
     <div class="lux-line"></div>
     <p>Qui puoi lasciare i tuoi link. O un segno del tuo passaggio.</p>
@@ -269,7 +331,7 @@ footer{
 </main>
 
 <footer>
-© 2026 — Dalila ✦ Luminous Shrine
+© 2026 — Dalila ✦ Angelic OS
 </footer>
 
 </body>
