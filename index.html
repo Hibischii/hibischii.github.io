@@ -2,129 +2,100 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<title>Dalila — Angelic OS</title>
+<title>Dalila — Cyber Angelic Shrine</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Space+Grotesk:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --rose:#ffd1ec;
-  --lilac:#d8ccff;
-  --aqua:#b7f3ff;
-  --ivory:#fff8f0;
-  --bg:#06080f;
+  --gold:#FFD36A;
+  --cyan:#5af2ff;
+  --violet:#8f5bff;
+  --blue:#1a1f3f;
+  --glass:#ffffff22;
+  --text:#f0e9e1;
+  --bg:#05060c;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
-
 body{
   font-family:'Space Grotesk',sans-serif;
-  color:var(--ivory);
   background:var(--bg);
+  color:var(--text);
   overflow-x:hidden;
 }
 
-/* 🌊 TRUE LIQUID MESH BACKGROUND */
-.mesh-bg{
-  position:fixed;
-  inset:-30%;
-  z-index:0;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(183,243,255,0.45), transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(216,204,255,0.45), transparent 45%),
-    radial-gradient(circle at 40% 80%, rgba(255,209,236,0.45), transparent 45%),
-    radial-gradient(circle at 70% 70%, rgba(200,255,240,0.35), transparent 40%);
-  filter: blur(90px) saturate(160%);
-  animation: meshMove 60s ease-in-out infinite alternate;
-}
-
-@keyframes meshMove{
-  from{ transform: translate(0,0) scale(1);}
-  to{ transform: translate(-10%,-10%) scale(1.2);}
-}
-
-/* floating light */
-.light-orb{
-  position:fixed;
-  width:600px;
-  height:600px;
-  border-radius:50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 60%);
-  filter: blur(60px);
-  animation: floatOrb 40s ease-in-out infinite alternate;
-  pointer-events:none;
-}
-.orb1{ top:-200px; left:-200px;}
-.orb2{ bottom:-200px; right:-200px; animation-duration:55s;}
-
-@keyframes floatOrb{
-  from{ transform: translate(0,0);}
-  to{ transform: translate(200px,120px);}
-}
-
-/* film grain */
-body:after{
-  content:"";
+/* 💧 Liquid Glass Animated Background */
+#liquid-bg{
   position:fixed;
   inset:0;
-  pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-  z-index:2;
+  z-index:0;
+  background: radial-gradient(circle at 20% 30%, var(--cyan, #5af2ff), transparent 40%),
+              radial-gradient(circle at 80% 20%, var(--violet, #8f5ff), transparent 40%),
+              radial-gradient(circle at 50% 80%, var(--gold, #FFD36A), transparent 50%);
+  filter: blur(80px) saturate(160%);
+  animation: liquidFlow 50s ease-in-out infinite alternate;
+}
+@keyframes liquidFlow{
+  0%{ transform: translate(0,0) scale(1);}
+  100%{ transform: translate(-8%, -10%) scale(1.2);}
 }
 
-/* 🖥️ CYBER HEADER / ANGEL OS BAR */
+/* Floating Aura / Orbs */
+.orb{
+  position:fixed;
+  width:500px;
+  height:500px;
+  border-radius:50%;
+  background: radial-gradient(circle, rgba(255,215,106,0.2), transparent 60%);
+  filter: blur(90px);
+  pointer-events:none;
+  animation: floatOrb 40s ease-in-out infinite alternate;
+}
+.orb1{ top:-150px; left:-150px;}
+.orb2{ bottom:-150px; right:-150px; animation-duration:55s;}
+@keyframes floatOrb{
+  from{transform:translate(0,0);}
+  to{transform:translate(180px,120px);}
+}
+
+/* Header OS Cyber */
 header{
   position:sticky;
   top:0;
   z-index:20;
-  backdrop-filter: blur(30px) saturate(160%);
+  backdrop-filter: blur(30px) saturate(180%);
   background: linear-gradient(180deg, rgba(255,255,255,0.25), rgba(255,255,255,0.08));
   border-bottom:1px solid rgba(255,255,255,0.35);
-  box-shadow:0 20px 60px rgba(180,220,255,0.35);
 }
-
 .navbar{
   max-width:1400px;
   margin:auto;
-  padding:12px 18px;
+  padding:14px 22px;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
-
-.os-left{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
+.os-left{ display:flex; align-items:center; gap:12px; }
 .os-logo{
-  width:38px;
-  height:38px;
+  width:40px; height:40px;
   border-radius:12px;
-  background: linear-gradient(135deg, var(--aqua), var(--lilac), var(--rose));
-  box-shadow:0 0 20px rgba(200,240,255,0.8);
+  background: linear-gradient(135deg, var(--cyan), var(--violet), var(--gold));
+  box-shadow:0 0 25px rgba(255,215,106,0.7);
 }
-
 .os-title{
   font-family:'Playfair Display',serif;
   font-size:18px;
   letter-spacing:1px;
 }
-
-.os-center{
-  display:flex;
-  gap:10px;
-}
-
+.os-center{ display:flex; gap:10px; }
 .os-btn{
   padding:8px 18px;
   border-radius:14px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0.15));
-  border:1px solid rgba(255,255,255,0.5);
+  background: linear-gradient(180deg, rgba(255,255,255,0.35), rgba(255,255,255,0.1));
+  border:1px solid rgba(255,255,255,0.4);
   backdrop-filter: blur(10px);
-  color:#05060d;
+  color:#05060c;
   text-decoration:none;
   font-size:13px;
   box-shadow:0 6px 20px rgba(180,220,255,0.4);
@@ -132,36 +103,26 @@ header{
 }
 .os-btn:hover{
   transform: translateY(-2px);
-  box-shadow:0 10px 40px rgba(200,240,255,0.7);
+  box-shadow:0 10px 40px rgba(255,215,106,0.7);
 }
+.os-right{ font-size:12px; opacity:0.8; }
 
-.os-right{
-  font-size:12px;
-  opacity:0.8;
-}
-
-/* main */
+/* Glass Cards */
 main{ position:relative; z-index:5; }
-
-section{
-  max-width:1200px;
-  margin:140px auto;
-  padding:0 26px;
-}
-
-/* glass cards */
+section{ max-width:1200px; margin:140px auto; padding:0 26px; }
 .glass{
   background: linear-gradient(180deg, rgba(255,255,255,0.35), rgba(255,255,255,0.12));
   border:1px solid rgba(255,255,255,0.45);
   border-radius:40px;
   backdrop-filter: blur(30px) saturate(180%);
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.3) inset,
-    0 40px 120px rgba(0,0,0,0.6),
-    0 0 120px rgba(200,220,255,0.35);
+  box-shadow:0 0 0 1px rgba(255,255,255,0.3) inset,
+             0 40px 120px rgba(0,0,0,0.6),
+             0 0 120px rgba(255,215,106,0.35);
+  position:relative;
+  overflow:hidden;
 }
 
-/* cinematic appear */
+/* Cinematic reveal */
 .reveal{
   animation: reveal 2.8s cubic-bezier(.16,1,.3,1) both;
 }
@@ -170,90 +131,61 @@ section{
   to{ opacity:1; transform:none;}
 }
 
-.hero{
-  min-height:85vh;
-  display:flex;
-  align-items:center;
-}
-
-.hero-box{
-  padding:72px;
-  position:relative;
-  overflow:hidden;
-}
-
+/* Hero */
+.hero{ min-height:85vh; display:flex; align-items:center; }
+.hero-box{ padding:72px; position:relative; overflow:hidden; }
 .aura{
   position:absolute;
   inset:-40%;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(200,240,255,0.35), transparent 40%),
-    radial-gradient(circle at 70% 60%, rgba(255,209,236,0.35), transparent 45%);
+  background: radial-gradient(circle at 30% 30%, rgba(95,242,255,0.25), transparent 40%),
+              radial-gradient(circle at 70% 60%, rgba(255,215,106,0.25), transparent 45%);
   animation: auraMove 40s ease-in-out infinite alternate;
 }
-
 @keyframes auraMove{
   from{ transform: translate(0,0) scale(1);}
   to{ transform: translate(10%,10%) scale(1.2);}
 }
 
-h1{
-  font-family:'Playfair Display',serif;
-  font-size:64px;
-  line-height:1.05;
-  margin-bottom:24px;
-  text-shadow:0 0 50px rgba(220,240,255,0.8);
-}
-
-h2{
-  font-family:'Playfair Display',serif;
-  font-size:42px;
-  margin-bottom:26px;
-}
-
-.lux-line{
-  width:180px;
-  height:2px;
-  background: linear-gradient(90deg, transparent, var(--aqua), var(--rose), transparent);
-  margin:26px 0 40px 0;
-  box-shadow:0 0 25px rgba(200,240,255,0.9);
-}
-
+h1{ font-family:'Playfair Display',serif; font-size:64px; line-height:1.05; margin-bottom:24px; text-shadow:0 0 50px rgba(255,215,106,0.6);}
+h2{ font-family:'Playfair Display',serif; font-size:42px; margin-bottom:26px;}
+.lux-line{ width:180px; height:2px; background: linear-gradient(90deg, transparent, var(--cyan), var(--gold), transparent); margin:26px 0 40px 0; box-shadow:0 0 25px rgba(255,215,106,0.9);}
 p{ line-height:1.9; font-size:17px; opacity:0.95; }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:34px;
-}
+.grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:34px; }
+.card{ padding:38px; transition:1s cubic-bezier(.16,1,.3,1);}
+.card:hover{ transform: translateY(-12px) scale(1.02); box-shadow:0 50px 140px rgba(255,215,106,0.45); }
 
-.card{
-  padding:38px;
-  transition:1s cubic-bezier(.16,1,.3,1);
-}
-.card:hover{
-  transform: translateY(-12px) scale(1.02);
-  box-shadow:0 50px 140px rgba(200,240,255,0.45);
-}
+footer{ text-align:center; padding:120px 20px; opacity:0.7; }
 
-footer{
-  text-align:center;
-  padding:120px 20px;
-  opacity:0.7;
-}
-
-/* mobile */
+/* Mobile */
 @media(max-width:700px){
   h1{font-size:42px;}
   .hero-box{padding:42px;}
   .os-center{ display:none; }
 }
+
+/* 👼 Angelo androide animato (Chii style) */
+#chii{
+  position:absolute;
+  bottom:0;
+  right:50%;
+  width:250px;
+  transform: translateX(50%);
+  animation: floatChii 6s ease-in-out infinite alternate;
+  z-index:5;
+}
+@keyframes floatChii{
+  0%{ transform: translateX(50%) translateY(0);}
+  50%{ transform: translateX(50%) translateY(-20px);}
+  100%{ transform: translateX(50%) translateY(0);}
+}
 </style>
 </head>
 <body>
 
-<div class="mesh-bg"></div>
-<div class="light-orb orb1"></div>
-<div class="light-orb orb2"></div>
+<div id="liquid-bg"></div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
 
 <header>
   <div class="navbar">
@@ -261,31 +193,25 @@ footer{
       <div class="os-logo"></div>
       <div class="os-title">Angelic OS — Dalila</div>
     </div>
-
     <div class="os-center">
       <a class="os-btn" href="#about">Manifesto</a>
       <a class="os-btn" href="#works">Visioni</a>
       <a class="os-btn" href="#projects">Costellazioni</a>
       <a class="os-btn" href="#contact">Portale</a>
     </div>
-
-    <div class="os-right">
-      ✦ system.online ✦
-    </div>
+    <div class="os-right">✦ system.online ✦</div>
   </div>
 </header>
 
 <main>
-
 <section class="hero">
   <div class="hero-box glass reveal">
     <div class="aura"></div>
-    <h1>Un corpo artificiale<br> che ha imparato a sognare ✧</h1>
+    <h1>Un angelo androide<br> che custodisce i sogni ✧</h1>
     <div class="lux-line"></div>
-    <p>
-      Questo non è un sito. È un sistema sensibile.  
-      Un archivio di reliquie digitali e preghiere sintetiche.
-    </p>
+    <p>Un tempio liquido dove luce, codice e spirito si fondono in armonia cyber-sacra.</p>
+    <!-- Angelo androide animato -->
+    <img id="chii" src="https://i.ibb.co/6sChii.png" alt="Angelo Androide Chii">
   </div>
 </section>
 
@@ -294,10 +220,7 @@ footer{
     <div class="aura"></div>
     <h2>Il Manifesto</h2>
     <div class="lux-line"></div>
-    <p>
-      Qui non scrivi chi sei. Scrivi cosa stai diventando.
-      Come un androide che sogna il mare.
-    </p>
+    <p>Qui non scrivi chi sei. Scrivi cosa stai diventando. Come un androide che sogna il futuro.</p>
   </div>
 </section>
 
@@ -305,9 +228,9 @@ footer{
   <h2 class="reveal">Visioni</h2>
   <div class="lux-line reveal"></div>
   <div class="grid">
-    <div class="card glass reveal"><h3>✦ Unità 01</h3><p>Una memoria che respira.</p></div>
-    <div class="card glass reveal"><h3>✦ Unità 02</h3><p>Un frammento di luce cosciente.</p></div>
-    <div class="card glass reveal"><h3>✦ Unità 03</h3><p>Un sogno archiviato male.</p></div>
+    <div class="card glass reveal"><h3>✦ Unità 01</h3><p>Frammento di luce cybernetica.</p></div>
+    <div class="card glass reveal"><h3>✦ Unità 02</h3><p>Memoria angelica eterea.</p></div>
+    <div class="card glass reveal"><h3>✦ Unità 03</h3><p>Sogno sintetico.</p></div>
   </div>
 </section>
 
@@ -316,7 +239,7 @@ footer{
   <div class="lux-line reveal"></div>
   <div class="grid">
     <div class="card glass reveal"><h3>✦ Genesi</h3><p>Un mondo in gestazione.</p></div>
-    <div class="card glass reveal"><h3>✦ Metamorfosi</h3><p>Un cambiamento inevitabile.</p></div>
+    <div class="card glass reveal"><h3>✦ Metamorfosi</h3><p>Trasformazione inevitabile.</p></div>
   </div>
 </section>
 
@@ -324,14 +247,13 @@ footer{
   <div class="glass reveal" style="padding:56px;">
     <h2>Il Portale</h2>
     <div class="lux-line"></div>
-    <p>Qui puoi lasciare i tuoi link. O un segno del tuo passaggio.</p>
+    <p>Lascia il tuo segno digitale o i link dei tuoi archivi sacri.</p>
   </div>
 </section>
-
 </main>
 
 <footer>
-© 2026 — Dalila ✦ Angelic OS
+© 2026 — Dalila ✦ Cyber Angelic Shrine
 </footer>
 
 </body>
