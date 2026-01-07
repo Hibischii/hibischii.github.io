@@ -1,274 +1,276 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <title>Dalila — Neon Dream Archive</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<title>Dalila — Luminous Shrine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Space+Grotesk:wght@300;500&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --pink:#ff7ac8;
-      --violet:#8f5bff;
-      --cyan:#5af2ff;
-      --gold:#ffd36a;
-      --dark:#05060c;
-    }
+<style>
+:root{
+  --rose:#ffb7e5;
+  --lilac:#c6b7ff;
+  --aqua:#9af3ff;
+  --ivory:#fff6ec;
+  --bg:#05060d;
+}
 
-    *{box-sizing:border-box;margin:0;padding:0;}
+*{margin:0;padding:0;box-sizing:border-box;}
 
-    body{
-      font-family: 'Space Grotesk', sans-serif;
-      color:white;
-      background:
-        radial-gradient(circle at 10% 10%, rgba(90,242,255,0.25), transparent 40%),
-        radial-gradient(circle at 90% 20%, rgba(143,91,255,0.35), transparent 40%),
-        radial-gradient(circle at 50% 90%, rgba(255,122,200,0.25), transparent 45%),
-        linear-gradient(180deg, #05060c, #0b0c18 60%, #05060c);
-      min-height:100vh;
-      overflow-x:hidden;
-    }
+body{
+  font-family:'Space Grotesk',sans-serif;
+  color:var(--ivory);
+  background:#05060d;
+  overflow-x:hidden;
+}
 
-    /* animated aurora */
-    .aurora{
-      position:fixed;
-      inset:-20%;
-      filter: blur(60px) saturate(120%);
-      z-index:0;
-      pointer-events:none;
-      background:
-        conic-gradient(from 180deg at 50% 50%,
-          rgba(90,242,255,0.25),
-          rgba(143,91,255,0.35),
-          rgba(255,122,200,0.25),
-          rgba(90,242,255,0.25));
-      animation: spin 40s linear infinite;
-      opacity:0.7;
-    }
-    @keyframes spin{ to{ transform: rotate(360deg);} }
+/* 🌊 Liquid animated background */
+.liquid-bg{
+  position:fixed;
+  inset:-30%;
+  z-index:0;
+  filter: blur(80px) saturate(140%);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(154,243,255,0.35), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(198,183,255,0.35), transparent 45%),
+    radial-gradient(circle at 40% 80%, rgba(255,183,229,0.35), transparent 45%);
+  animation: liquidMove 40s ease-in-out infinite alternate;
+}
 
-    /* floating orbs */
-    .orb{
-      position:fixed;
-      width:300px;height:300px;
-      border-radius:50%;
-      filter: blur(90px);
-      opacity:0.35;
-      pointer-events:none;
-      z-index:0;
-      animation: drift 30s linear infinite;
-    }
-    .orb.cyan{ background: var(--cyan); top:10%; left:-120px;}
-    .orb.pink{ background: var(--pink); bottom:10%; right:-120px; animation-duration:40s;}
+@keyframes liquidMove{
+  0%{ transform: translate(0,0) scale(1);}
+  100%{ transform: translate(-10%, -10%) scale(1.2);}
+}
 
-    @keyframes drift{
-      from{ transform: translate(0,0); }
-      to{ transform: translate(200px,-200px); }
-    }
+/* subtle film grain */
+body:after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  z-index:2;
+}
 
-    /* subtle noise */
-    body:before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
-      z-index:1;
-    }
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  backdrop-filter: blur(20px) saturate(150%);
+  background: rgba(10,10,25,0.4);
+  border-bottom:1px solid rgba(255,255,255,0.15);
+}
 
-    header{
-      position:sticky;
-      top:0;
-      z-index:10;
-      backdrop-filter: blur(18px) saturate(140%);
-      background: rgba(20,20,40,0.4);
-      border-bottom:1px solid rgba(255,255,255,0.2);
-    }
+nav{
+  max-width:1200px;
+  margin:auto;
+  padding:18px 26px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-    nav{
-      max-width:1200px;
-      margin:auto;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:16px 24px;
-    }
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:22px;
+  background: linear-gradient(90deg,var(--ivory),var(--aqua),var(--lilac));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 25px rgba(180,220,255,0.6);
+}
 
-    .logo{
-      font-family:'Playfair Display', serif;
-      font-size:22px;
-      background: linear-gradient(90deg, var(--cyan), var(--violet), var(--pink));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      text-shadow:0 0 20px rgba(90,242,255,0.6);
-    }
+nav a{
+  color:var(--ivory);
+  text-decoration:none;
+  margin-left:20px;
+  opacity:0.8;
+}
+nav a:hover{opacity:1;}
 
-    nav a{
-      color:white;
-      text-decoration:none;
-      margin-left:18px;
-      opacity:0.8;
-      position:relative;
-    }
-    nav a:hover{opacity:1;}
+main{position:relative;z-index:5;}
 
-    main{position:relative;z-index:2;}
+section{
+  max-width:1200px;
+  margin:120px auto;
+  padding:0 26px;
+}
 
-    section{
-      max-width:1200px;
-      margin:100px auto;
-      padding:0 24px;
-    }
+/* 💎 Luxury glass */
+.glass{
+  background: linear-gradient(180deg, rgba(255,255,255,0.25), rgba(255,255,255,0.08));
+  border:1px solid rgba(255,255,255,0.35);
+  border-radius:36px;
+  backdrop-filter: blur(28px) saturate(160%);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.25) inset,
+    0 30px 80px rgba(0,0,0,0.6),
+    0 0 80px rgba(200,220,255,0.25);
+}
 
-    .glass{
-      background: linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0.08));
-      border:1px solid rgba(255,255,255,0.35);
-      border-radius:32px;
-      backdrop-filter: blur(24px) saturate(160%);
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,0.2) inset,
-        0 20px 60px rgba(0,0,0,0.5),
-        0 0 60px rgba(90,242,255,0.25);
-    }
+/* 🎥 Cinematic fade-in */
+.reveal{
+  animation: reveal 2.5s ease both;
+}
+@keyframes reveal{
+  from{ opacity:0; transform: translateY(40px) scale(0.98);}
+  to{ opacity:1; transform:none;}
+}
 
-    .hero{
-      min-height:75vh;
-      display:flex;
-      align-items:center;
-    }
+.hero{
+  min-height:80vh;
+  display:flex;
+  align-items:center;
+}
 
-    .hero-box{
-      padding:56px;
-      position:relative;
-      overflow:hidden;
-    }
+.hero-box{
+  padding:64px;
+}
 
-    h1{
-      font-family:'Playfair Display', serif;
-      font-size:60px;
-      line-height:1.05;
-      text-shadow:0 0 30px rgba(143,91,255,0.5);
-      margin-bottom:20px;
-    }
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:64px;
+  line-height:1.05;
+  margin-bottom:22px;
+  text-shadow:0 0 40px rgba(200,220,255,0.6);
+}
 
-    h2{
-      font-family:'Playfair Display', serif;
-      font-size:38px;
-      margin-bottom:24px;
-      background: linear-gradient(90deg,#fff,#cfefff);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
+h2{
+  font-family:'Playfair Display',serif;
+  font-size:40px;
+  margin-bottom:26px;
+  background: linear-gradient(90deg,var(--ivory),#d6eaff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
 
-    .neon-line{
-      width:140px;height:2px;
-      background: linear-gradient(90deg, transparent, var(--cyan), var(--pink), transparent);
-      margin:18px 0 34px 0;
-      box-shadow:0 0 20px rgba(90,242,255,0.8);
-    }
+.lux-line{
+  width:160px;
+  height:2px;
+  background: linear-gradient(90deg, transparent, var(--aqua), var(--rose), transparent);
+  margin:22px 0 38px 0;
+  box-shadow:0 0 25px rgba(180,220,255,0.8);
+}
 
-    p{opacity:0.9;line-height:1.8;}
+p{opacity:0.95;line-height:1.9;font-size:17px;}
 
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-      gap:28px;
-    }
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:32px;
+}
 
-    .card{
-      padding:28px;
-      transition:.5s;
-      position:relative;
-      overflow:hidden;
-    }
+.card{
+  padding:34px;
+  transition:1s cubic-bezier(.16,1,.3,1);
+}
+.card:hover{
+  transform: translateY(-10px) scale(1.02);
+  box-shadow:0 40px 120px rgba(180,220,255,0.35);
+}
 
-    .card:hover{
-      transform: translateY(-8px) scale(1.02);
-      box-shadow:0 20px 80px rgba(90,242,255,0.35);
-    }
+footer{
+  text-align:center;
+  padding:100px 20px;
+  opacity:0.7;
+}
 
-    footer{
-      text-align:center;
-      padding:80px 20px;
-      opacity:0.7;
-    }
+/* slow floating aura */
+.aura{
+  position:absolute;
+  inset:-40%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(180,220,255,0.25), transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(255,183,229,0.25), transparent 45%);
+  animation: auraMove 30s ease-in-out infinite alternate;
+  pointer-events:none;
+}
 
-    @media(max-width:700px){
-      h1{font-size:42px;}
-      .hero-box{padding:32px;}
-    }
-  </style>
+@keyframes auraMove{
+  from{ transform: translate(0,0) scale(1);}
+  to{ transform: translate(10%,5%) scale(1.2);}
+}
+
+@media(max-width:700px){
+  h1{font-size:42px;}
+  .hero-box{padding:36px;}
+}
+</style>
 </head>
 <body>
 
-  <div class="aurora"></div>
-  <div class="orb cyan"></div>
-  <div class="orb pink"></div>
+<div class="liquid-bg"></div>
 
-  <header>
-    <nav>
-      <div class="logo">Dalila ✦ Neon Dream Archive</div>
-      <div>
-        <a href="#about">About</a>
-        <a href="#works">Creazioni</a>
-        <a href="#projects">Progetti</a>
-        <a href="#contact">Contatti</a>
-      </div>
-    </nav>
-  </header>
+<header>
+  <nav>
+    <div class="logo">Dalila ✦ Luminous Shrine</div>
+    <div>
+      <a href="#about">Manifesto</a>
+      <a href="#works">Visioni</a>
+      <a href="#projects">Costellazioni</a>
+      <a href="#contact">Portale</a>
+    </div>
+  </nav>
+</header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-box glass">
-        <h1>Un archivio di sogni,<br> segnali e frammenti di futuro ✧</h1>
-        <div class="neon-line"></div>
-        <p>
-          Questo non è un sito. È un segnale nel rumore cosmico.  
-          Un luogo dove le immagini diventano memoria e la memoria diventa luce.
-        </p>
-      </div>
-    </section>
+<main>
 
-    <section id="about">
-      <div class="glass" style="padding:40px;">
-        <h2>About me</h2>
-        <div class="neon-line"></div>
-        <p>Scrivi qui una descrizione poetica di te, come se fossi un mito digitale.</p>
-      </div>
-    </section>
+<section class="hero">
+  <div class="hero-box glass reveal">
+    <div class="aura"></div>
+    <h1>Un tempio di luce,<br> dove i sogni imparano a respirare ✧</h1>
+    <div class="lux-line"></div>
+    <p>
+      Questo luogo non archivia opere. Le custodisce come reliquie.  
+      Ogni immagine è un frammento di anima sintetica. Ogni idea, una preghiera.
+    </p>
+  </div>
+</section>
 
-    <section id="works">
-      <h2>Creazioni</h2>
-      <div class="neon-line"></div>
-      <div class="grid">
-        <div class="card glass"><h3>✦ Frammento 01</h3><p>Un'opera proveniente da un altro tempo.</p></div>
-        <div class="card glass"><h3>✦ Frammento 02</h3><p>Un sogno codificato.</p></div>
-        <div class="card glass"><h3>✦ Frammento 03</h3><p>Una memoria artificiale.</p></div>
-      </div>
-    </section>
+<section id="about">
+  <div class="glass reveal" style="padding:48px; position:relative; overflow:hidden;">
+    <div class="aura"></div>
+    <h2>Il Manifesto</h2>
+    <div class="lux-line"></div>
+    <p>
+      Scrivi qui chi sei come se fossi una creatura nata tra silicio e sogno.
+      Non una biografia. Un incantesimo.
+    </p>
+  </div>
+</section>
 
-    <section id="projects">
-      <h2>Progetti futuri</h2>
-      <div class="neon-line"></div>
-      <div class="grid">
-        <div class="card glass"><h3>✦ Segnale in arrivo</h3><p>Un mondo che sta per nascere.</p></div>
-        <div class="card glass"><h3>✦ Costellazione</h3><p>Idee collegate tra loro.</p></div>
-      </div>
-    </section>
+<section id="works">
+  <h2 class="reveal">Visioni</h2>
+  <div class="lux-line reveal"></div>
+  <div class="grid">
+    <div class="card glass reveal"><h3>✦ Reliquia I</h3><p>Un frammento di un altro mondo.</p></div>
+    <div class="card glass reveal"><h3>✦ Reliquia II</h3><p>Un sogno che ha imparato a guardarti.</p></div>
+    <div class="card glass reveal"><h3>✦ Reliquia III</h3><p>Una memoria che non ti appartiene più.</p></div>
+  </div>
+</section>
 
-    <section id="contact">
-      <div class="glass" style="padding:40px;">
-        <h2>Contatti</h2>
-        <div class="neon-line"></div>
-        <p>Qui inserisci i tuoi link: Instagram, Tumblr, mail, ecc.</p>
-      </div>
-    </section>
-  </main>
+<section id="projects">
+  <h2 class="reveal">Costellazioni</h2>
+  <div class="lux-line reveal"></div>
+  <div class="grid">
+    <div class="card glass reveal"><h3>✦ Nascita</h3><p>Un mondo in gestazione.</p></div>
+    <div class="card glass reveal"><h3>✦ Metamorfosi</h3><p>Un cambiamento inevitabile.</p></div>
+  </div>
+</section>
 
-  <footer>
-    © 2026 — Dalila ✦ Neon Dream Archive
-  </footer>
+<section id="contact">
+  <div class="glass reveal" style="padding:48px;">
+    <h2>Il Portale</h2>
+    <div class="lux-line"></div>
+    <p>Qui puoi lasciare i tuoi link. O un segno del tuo passaggio.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+© 2026 — Dalila ✦ Luminous Shrine
+</footer>
 
 </body>
 </html>
