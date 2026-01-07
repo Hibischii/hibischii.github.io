@@ -11,29 +11,31 @@
   --gold:#FFD36A;
   --cyan:#5af2ff;
   --violet:#8f5bff;
-  --blue:#1a1f3f;
-  --glass:#ffffff22;
+  --rose:#ffb7e5;
+  --bg-dark:#0b0c1a;
   --text:#f0e9e1;
-  --bg:#05060c;
+  --glass:#ffffff22;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:'Space Grotesk',sans-serif;
-  background:var(--bg);
+  background: var(--bg-dark);
   color:var(--text);
   overflow-x:hidden;
 }
 
-/* 💧 Liquid Glass Animated Background */
+/* 💧 Liquid Glass Background */
 #liquid-bg{
   position:fixed;
   inset:0;
   z-index:0;
-  background: radial-gradient(circle at 20% 30%, var(--cyan, #5af2ff), transparent 40%),
-              radial-gradient(circle at 80% 20%, var(--violet, #8f5ff), transparent 40%),
-              radial-gradient(circle at 50% 80%, var(--gold, #FFD36A), transparent 50%);
-  filter: blur(80px) saturate(160%);
+  background:
+    radial-gradient(circle at 20% 30%, var(--cyan), transparent 40%),
+    radial-gradient(circle at 80% 20%, var(--violet), transparent 40%),
+    radial-gradient(circle at 50% 80%, var(--gold), transparent 50%),
+    radial-gradient(circle at 70% 70%, var(--rose), transparent 40%);
+  filter: blur(90px) saturate(160%);
   animation: liquidFlow 50s ease-in-out infinite alternate;
 }
 @keyframes liquidFlow{
@@ -41,7 +43,7 @@ body{
   100%{ transform: translate(-8%, -10%) scale(1.2);}
 }
 
-/* Floating Aura / Orbs */
+/* Floating Orbs */
 .orb{
   position:fixed;
   width:500px;
@@ -65,13 +67,13 @@ header{
   top:0;
   z-index:20;
   backdrop-filter: blur(30px) saturate(180%);
-  background: linear-gradient(180deg, rgba(255,255,255,0.25), rgba(255,255,255,0.08));
-  border-bottom:1px solid rgba(255,255,255,0.35);
+  background: linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,255,255,0.08));
+  border-bottom:1px solid rgba(255,255,255,0.25);
 }
 .navbar{
   max-width:1400px;
   margin:auto;
-  padding:14px 22px;
+  padding:12px 20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -90,50 +92,51 @@ header{
 }
 .os-center{ display:flex; gap:10px; }
 .os-btn{
-  padding:8px 18px;
-  border-radius:14px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.35), rgba(255,255,255,0.1));
-  border:1px solid rgba(255,255,255,0.4);
-  backdrop-filter: blur(10px);
+  padding:10px 20px;
+  border-radius:20px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.3), rgba(255,255,255,0.08));
+  border:1px solid rgba(255,255,255,0.35);
+  backdrop-filter: blur(18px) saturate(160%);
   color:#05060c;
   text-decoration:none;
-  font-size:13px;
-  box-shadow:0 6px 20px rgba(180,220,255,0.4);
-  transition:.6s cubic-bezier(.16,1,.3,1);
+  font-size:14px;
+  box-shadow:0 6px 25px rgba(180,220,255,0.4);
+  transition:.5s ease-in-out;
 }
 .os-btn:hover{
   transform: translateY(-2px);
-  box-shadow:0 10px 40px rgba(255,215,106,0.7);
+  box-shadow:0 12px 40px rgba(255,215,106,0.7);
 }
 .os-right{ font-size:12px; opacity:0.8; }
 
-/* Glass Cards */
+/* Main & Sections */
 main{ position:relative; z-index:5; }
-section{ max-width:1200px; margin:140px auto; padding:0 26px; }
+section{ max-width:1200px; margin:0 auto 120px auto; padding:0 20px; }
 .glass{
-  background: linear-gradient(180deg, rgba(255,255,255,0.35), rgba(255,255,255,0.12));
+  background: linear-gradient(180deg, rgba(255,255,255,0.35), rgba(255,255,255,0.1));
   border:1px solid rgba(255,255,255,0.45);
-  border-radius:40px;
-  backdrop-filter: blur(30px) saturate(180%);
+  border-radius:36px;
+  backdrop-filter: blur(28px) saturate(180%);
   box-shadow:0 0 0 1px rgba(255,255,255,0.3) inset,
-             0 40px 120px rgba(0,0,0,0.6),
-             0 0 120px rgba(255,215,106,0.35);
+             0 30px 100px rgba(0,0,0,0.5),
+             0 0 100px rgba(255,215,106,0.35);
   position:relative;
   overflow:hidden;
+  padding:40px;
 }
 
-/* Cinematic reveal */
+/* Cinematic Reveal */
 .reveal{
-  animation: reveal 2.8s cubic-bezier(.16,1,.3,1) both;
+  animation: reveal 2.5s cubic-bezier(.16,1,.3,1) both;
 }
 @keyframes reveal{
-  from{ opacity:0; transform: translateY(60px) scale(0.96);}
+  from{ opacity:0; transform: translateY(40px) scale(0.96);}
   to{ opacity:1; transform:none;}
 }
 
 /* Hero */
 .hero{ min-height:85vh; display:flex; align-items:center; }
-.hero-box{ padding:72px; position:relative; overflow:hidden; }
+.hero-box{ padding:60px; position:relative; overflow:hidden; }
 .aura{
   position:absolute;
   inset:-40%;
@@ -146,38 +149,22 @@ section{ max-width:1200px; margin:140px auto; padding:0 26px; }
   to{ transform: translate(10%,10%) scale(1.2);}
 }
 
-h1{ font-family:'Playfair Display',serif; font-size:64px; line-height:1.05; margin-bottom:24px; text-shadow:0 0 50px rgba(255,215,106,0.6);}
-h2{ font-family:'Playfair Display',serif; font-size:42px; margin-bottom:26px;}
-.lux-line{ width:180px; height:2px; background: linear-gradient(90deg, transparent, var(--cyan), var(--gold), transparent); margin:26px 0 40px 0; box-shadow:0 0 25px rgba(255,215,106,0.9);}
-p{ line-height:1.9; font-size:17px; opacity:0.95; }
+h1{ font-family:'Playfair Display',serif; font-size:60px; line-height:1.05; margin-bottom:24px; text-shadow:0 0 45px rgba(255,215,106,0.6);}
+h2{ font-family:'Playfair Display',serif; font-size:38px; margin-bottom:24px;}
+.lux-line{ width:180px; height:2px; background: linear-gradient(90deg, transparent, var(--cyan), var(--gold), transparent); margin:26px 0 36px 0; box-shadow:0 0 25px rgba(255,215,106,0.9);}
+p{ line-height:1.8; font-size:17px; opacity:0.95; }
 
-.grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:34px; }
-.card{ padding:38px; transition:1s cubic-bezier(.16,1,.3,1);}
-.card:hover{ transform: translateY(-12px) scale(1.02); box-shadow:0 50px 140px rgba(255,215,106,0.45); }
+.grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:30px; }
+.card{ padding:30px; transition:1s cubic-bezier(.16,1,.3,1);}
+.card:hover{ transform: translateY(-10px) scale(1.02); box-shadow:0 40px 120px rgba(255,215,106,0.45); }
 
-footer{ text-align:center; padding:120px 20px; opacity:0.7; }
+footer{ text-align:center; padding:100px 20px; opacity:0.7; }
 
 /* Mobile */
 @media(max-width:700px){
   h1{font-size:42px;}
-  .hero-box{padding:42px;}
+  .hero-box{padding:36px;}
   .os-center{ display:none; }
-}
-
-/* 👼 Angelo androide animato (Chii style) */
-#chii{
-  position:absolute;
-  bottom:0;
-  right:50%;
-  width:250px;
-  transform: translateX(50%);
-  animation: floatChii 6s ease-in-out infinite alternate;
-  z-index:5;
-}
-@keyframes floatChii{
-  0%{ transform: translateX(50%) translateY(0);}
-  50%{ transform: translateX(50%) translateY(-20px);}
-  100%{ transform: translateX(50%) translateY(0);}
 }
 </style>
 </head>
@@ -207,20 +194,18 @@ footer{ text-align:center; padding:120px 20px; opacity:0.7; }
 <section class="hero">
   <div class="hero-box glass reveal">
     <div class="aura"></div>
-    <h1>Un angelo androide<br> che custodisce i sogni ✧</h1>
+    <h1>Un tempio liquido di luce e codice ✧</h1>
     <div class="lux-line"></div>
-    <p>Un tempio liquido dove luce, codice e spirito si fondono in armonia cyber-sacra.</p>
-    <!-- Angelo androide animato -->
-    <img id="chii" src="https://i.ibb.co/6sChii.png" alt="Angelo Androide Chii">
+    <p>Un luogo dove luce, spirito e tecnologia si fondono in armonia cyber-sacra.</p>
   </div>
 </section>
 
 <section id="about">
-  <div class="glass reveal" style="padding:56px; position:relative; overflow:hidden;">
+  <div class="glass reveal">
     <div class="aura"></div>
     <h2>Il Manifesto</h2>
     <div class="lux-line"></div>
-    <p>Qui non scrivi chi sei. Scrivi cosa stai diventando. Come un androide che sogna il futuro.</p>
+    <p>Qui non scrivi chi sei. Scrivi cosa stai diventando, come un androide che sogna il futuro.</p>
   </div>
 </section>
 
@@ -244,7 +229,7 @@ footer{ text-align:center; padding:120px 20px; opacity:0.7; }
 </section>
 
 <section id="contact">
-  <div class="glass reveal" style="padding:56px;">
+  <div class="glass reveal">
     <h2>Il Portale</h2>
     <div class="lux-line"></div>
     <p>Lascia il tuo segno digitale o i link dei tuoi archivi sacri.</p>
